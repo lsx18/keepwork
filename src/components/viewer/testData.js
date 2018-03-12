@@ -64,6 +64,19 @@ export default {
           }
         }
       }
+    },
+    {
+      key: 'gyhh',
+      type: 'ModMixPosition',
+      styleID: 3,
+      components: {
+        button: {
+          type: 'AdiButton',
+          data: {
+            text: '查看更多看看看'
+          }
+        }
+      }
     }
   ],
   theme: {
