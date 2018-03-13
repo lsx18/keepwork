@@ -1,5 +1,5 @@
 const ModHeader = () => import('./web/header')
-const ModMixPosition = () => import('./web/mix_position')
+const ModMixPosition = () => import('./web/mixPosition')
 
 export default {
   ModHeader,

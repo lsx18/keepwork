@@ -1,5 +1,5 @@
 import ModHeader from './web/header'
-import ModMixPosition from './web/mix_position'
+import ModMixPosition from './web/mixPosition'
 
 export default {
   ModHeader,
