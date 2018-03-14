@@ -16,6 +16,9 @@ export default [
         width: '50%',
         float: 'left',
         'margin-left': '5px'
+      },
+      button: {
+        float: 'right'
       }
     },
     theme: {
