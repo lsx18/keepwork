@@ -24,12 +24,14 @@ export default [
     theme: {
       root: ['font_0', 'color_7'],
       paragraph: ['color_3']
+      // button: ['color_7']
     },
     options: {
       theme: {
         button: {
           fontSize: 'font_0',
-          fontColor: 'color_1'
+          fontColor: 'color_7',
+          bgColor: 'color_0'
         }
       },
       config: {}
