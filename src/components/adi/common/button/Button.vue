@@ -1,6 +1,8 @@
 <template>
   <div class="comp-button">
-    <button :style="style" @click="MORE"> {{data.text}} </button>
+    <a :href='data.link'>
+      <button :style="style" @click="more"> {{data.text}} </button>
+    </a>
   </div>
 </template>
 
@@ -10,12 +12,20 @@ export default {
   name: 'AdiButton',
   mixins: [compBaseMixin],
   methods: {
-    MORE: function() {
-      window.open('http://keepwork.com')
-    }
+    more: () => window.open('#')
   },
   computed: {
-    style() {},
+    style() {
+      return (
+        'font-size:' +
+        this.options.fontSize +
+        ';line-height:' +
+        parseInt(this.options.fontSize) / 2 +
+        'px' +
+        ';color:' +
+        this.options.fontColor
+      )
+    },
     data() {
       return JSON.parse(this.source.data)
     }
@@ -30,7 +40,7 @@ export default {
     height: 100%;
     button {
       height: 100%;
-      line-height: 20px;
+      // line-height: 20px;
     }
   }
 }

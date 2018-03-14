@@ -5,6 +5,7 @@ export default [
       // 定义mod根div的样式
       root: {
         position: 'relative',
+        padding: '1%',
         overflow: 'auto',
         zoom: 1
       },
@@ -13,9 +14,9 @@ export default [
         float: 'left'
       },
       group: {
-        width: '50%',
+        width: '56%',
         float: 'left',
-        'margin-left': '5px'
+        'margin-left': '3%'
       },
       button: {
         float: 'right'
@@ -26,7 +27,12 @@ export default [
       paragraph: ['color_3']
     },
     options: {
-      theme: {},
+      theme: {
+        button: {
+          fontSize: 'font_0',
+          fontColor: 'color_1'
+        }
+      },
       config: {}
     }
   },
