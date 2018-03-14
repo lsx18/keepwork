@@ -1,7 +1,8 @@
 <template>
   <div class="comp-button">
-    <a :href='data.link'>
+    <a>
       <button :style="style" @click="more"> {{data.text}} </button>
+      <!-- <router-view></router-view> -->
     </a>
   </div>
 </template>
@@ -12,7 +13,9 @@ export default {
   name: 'AdiButton',
   mixins: [compBaseMixin],
   methods: {
-    more: () => window.open('#')
+    more: function() {
+      this.$router.push({ path: '/PageViewer' }) //其中pagecontent是定义的一个路由模块
+    }
   },
   computed: {
     style() {
