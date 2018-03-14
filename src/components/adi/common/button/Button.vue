@@ -1,8 +1,6 @@
 <template>
   <div class="comp-button">
-    <a :href='data.link'>
-      <button :style="style"> {{data.text}} </button>
-    </a>
+    <button :style="style" @click="MORE"> {{data.text}} </button>
   </div>
 </template>
 
@@ -11,7 +9,11 @@ import compBaseMixin from '../comp.base.mixin'
 export default {
   name: 'AdiButton',
   mixins: [compBaseMixin],
-  methods: {},
+  methods: {
+    MORE: function() {
+      window.open('http://keepwork.com')
+    }
+  },
   computed: {
     style() {},
     data() {
