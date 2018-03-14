@@ -19,11 +19,10 @@ export default {
       return (
         'font-size:' +
         this.options.fontSize +
-        ';line-height:' +
-        parseInt(this.options.fontSize) / 2 +
-        'px' +
         ';color:' +
-        this.options.fontColor
+        this.options.fontColor +
+        ';background:' +
+        this.options.bgColor
       )
     },
     data() {
@@ -39,6 +38,7 @@ export default {
   a {
     height: 100%;
     button {
+      border: none;
       height: 100%;
       // line-height: 20px;
     }
