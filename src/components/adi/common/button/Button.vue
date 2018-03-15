@@ -13,8 +13,8 @@ export default {
   name: 'AdiButton',
   mixins: [compBaseMixin],
   methods: {
-    more: function() {
-      this.$router.push({ path: '/PageViewer' }) //其中pagecontent是定义的一个路由模块
+    more() {
+      this.$router.push({ path: '/PageViewer' }) //其中PageViewer是定义的一个路由模块
     }
   },
   computed: {
