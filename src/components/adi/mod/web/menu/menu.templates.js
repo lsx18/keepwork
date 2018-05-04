@@ -1,4 +1,7 @@
 export default [
   // template 1
-  [{ colMenu: 'menu' }]
+  [{ colMenu: 'menu' }],
+
+  // template 2
+  [{ colFooter: 'footer' }]
 ]
