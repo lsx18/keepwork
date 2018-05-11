@@ -108,59 +108,72 @@ export default {
     renderContent(h, { data, note, store }) {
       return <div>{data.name}</div>
     },
-    find() {
-      for (let i in data) {
-        // if (node) {
-        //   break
-        // }
-        // // let obj = data[i]
-        // //没有就下一个
-        // if (!data[i] || !data[i].name) {
-        //   continue
-        // }
+    // find() {
+    //   for (let i in data) {
+    //     // if (node) {
+    //     //   break
+    //     // }
+    //     // // let obj = data[i]
+    //     // //没有就下一个
+    //     // if (!data[i] || !data[i].name) {
+    //     //   continue
+    //     // }
 
-        if (data[i].type == 'blob') {
-          if (data[i].name.match(reg)) {
-            arr.push(data[i])
-          } else {
-            //跳出当前递归，返回上层递归
-            continue
-          }
-        } else {
-          //如果是文件夹就递归
-          if (data[i].children) {
-            //递归往下找
-            find(data[i].children)
-          } else {
-            //跳出当前递归，返回上层递归
-            continue
-          }
-        }
-        // if (data[i].children) {
-        //   // let node = null
-        //   // let parentNode = null
-        //   // var obj = getNode(data, reg)
-      }
-    },
+    //     if (data[i].type == 'blob') {
+    //       if (data[i].name.match(reg)) {
+    //         arr.push(data[i])
+    //       } else {
+    //         //跳出当前递归，返回上层递归
+    //         continue
+    //       }
+    //     } else {
+    //       //如果是文件夹就递归
+    //       if (data[i].children) {
+    //         //递归往下找
+    //         find(data[i].children)
+    //       } else {
+    //         //跳出当前递归，返回上层递归
+    //         continue
+    //       }
+    //     }
+    //     // if (data[i].children) {
+    //     //   // let node = null
+    //     //   // let parentNode = null
+    //     //   // var obj = getNode(data, reg)
+    //   }
+    // },
     filter(data) {
       // let temp = '^.*abc.*$'
       let temp = `^.*${this.properties.inputData || ''}.*$`
       let reg = new RegExp(temp, '')
       // let reg = new RegExp('tes', '')
 
-      console.log(this.properties.inputData)
+      // console.log(this.properties.inputData)
       // console.log(data)
       // console.log(this)
       // console.log(this.$options)
       // return data
       let arr = []
 
-      // for (let i in data) {
-      //   if (data[i].name.match(reg) && data[i].type == 'blob') {
-      //     arr.push(data[i])
-      //   }
-      // }
-      this.find
+      for (let i in data) {
+        if (data[i].type == 'blob') {
+          if (data[i].name.match(reg)) {
+            arr.push(data[i])
+          }
+        } else {
+          // //如果是文件夹就递归
+          if (data[i].children) {
+            //递归往下找
+            arr.push(data[i])
+            // find(data[i].children)
+          }
+          // else {
+          //   //跳出当前递归，返回上层递归
+          //   continue
+          // }
+        }
+      }
+      // this.find
       // arr.forEach(item => {
       //   if (item.id == id) {
       //     return item
@@ -169,11 +182,11 @@ export default {
       //   }
       // })
       return arr
+    },
+    filterNode(value, data) {
+      if (!value) return true
+      return data.name.indexOf(value) !== -1
     }
-    // filterNode(value, data) {
-    //   if (!value) return true
-    //   return data.name.indexOf(value) !== -1
-    // }
   }
 }
 </script>
