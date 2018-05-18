@@ -125,7 +125,8 @@ export default [
         }
       },
       title: {
-        'margin-top': '20px'
+        'margin-top': '20px',
+        width: '10px'
       },
       subtitle: {
         'margin-top': '10px'
