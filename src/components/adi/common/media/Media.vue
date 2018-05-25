@@ -1,7 +1,7 @@
 <template>
-  <div class='comp-media'>
-    <a :target='target' :href='link'>
-      <div class="img" v-if='isImage' :style="loadImg"></div>
+  <div class='comp-media' ref="e">
+    <a :target='target' :href='link' ref="ee">
+      <div ref="re" class="img" v-if='isImage' :style="loadImg"></div>
       <video v-else-if='isVideo' :src='src'></video>
       <div class="svg" v-if="isBase64Svg" v-html="svg" :style="svgFill"></div>
     </a>
@@ -81,6 +81,7 @@ export default {
     height: 100%;
     background-position: center;
     background-size: cover;
+    // border-radius: 50%;
   }
 }
 </style>

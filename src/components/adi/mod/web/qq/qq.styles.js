@@ -19,44 +19,55 @@ export default [
     data: {
       root: {
         'z-index': '3',
-        position: 'fixed',
-        height: '120px'
+        position: 'relative'
+        // height: '120px'
       },
       colGroup: {
-        position: 'fixed',
-        right: '40px',
-        top: '15%',
-        'padding-top': '15px'
+        position: 'relative',
+        right: '0',
+        top: 'unset',
+        'padding-top': '15px',
+        'padding-right': '20px',
+        'padding-bottom': '15px'
       },
+      // '@media only screen and (max-width: 767px)': {
+      //   colGroup: {
+      //     'padding-right': '20px'
+      //   }
+      // },
       colPic: {
-        'min-width': '100px',
+        // 'min-width': '70px',
+        // width: 'auto',
         display: 'flex',
-        'justify-content': 'center'
+        'justify-content': 'flex-end'
       },
       pic: {
         width: '70px',
-        height: '70px',
-        'border-radius': '50%'
+        height: '70px'
+        // 'border-radius': '50%'
       },
       colDesc: {
-        'min-width': '100px',
+        // width: 'auto',
+        // 'min-width': '70px',
         display: 'flex',
-        'justify-content': 'center'
+        'justify-content': 'flex-end'
       },
       desc: {
+        width: '70px',
         'text-align': 'center'
       }
     },
     props: {
       colGroup: {
-        xs: {
-          span: 3,
-          offset: 21
-        },
-        sm: {
-          span: 2,
-          offset: 22
-        }
+        span: 24
+        // xs: {
+        //   span: 3,
+        //   offset: 21
+        // },
+        // sm: {
+        //   span: 2,
+        //   offset: 22
+        // }
       },
       colPic: { span: 24 },
       colDesc: { span: 24 }

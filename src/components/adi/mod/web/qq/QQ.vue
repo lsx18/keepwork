@@ -29,6 +29,19 @@ import baseMixin from '../../base/base.mixin'
 
 export default {
   mixins: [baseMixin],
+  mounted() {
+    // console.log(this.$el.children)
+    // console.log(this.$el.getBoundingClientRect().height)
+    // console.log(this)
+    // console.log(this.$refs.tit)
+    // return (this.$el.innerHTML = 'bian')
+  },
+  created() {
+    // console.log(this.$refs.re)
+  },
+  updated() {
+    // console.log(this.$refs.re)
+  },
   methods: {
     compWrapperOptions(name) {
       let options = {}
@@ -45,11 +58,18 @@ export default {
       } else {
         this.modData.pic.link = qqUrl
       }
+      // console.log(this.$refs)
+      // console.log(this)
+      // // console.log(String(this.$el.innerHTML))
+      // console.log(this.conf.name)
 
-      if (this.editMode) {
-        this.style.data.root.position = 'relative'
-        this.style.data.colGroup.position = 'relative'
-        this.style.data.colGroup.top = 'unset'
+      if (!this.editMode) {
+        // this.style.theme.colGroupRow = '[]'
+        this.style.data.root.position = 'fixed'
+        // this.style.data.root.height = '120px'
+        this.style.data.colGroup.position = 'fixed'
+        // this.style.data.colGroup.right = '20px'
+        this.style.data.colGroup.top = '15%'
       }
 
       if (this.modData.styleID == '1') {
