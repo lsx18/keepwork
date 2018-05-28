@@ -8,7 +8,7 @@
       <div v-for='mod in activeModsList' :key='mod.name'>
         <div v-if='!style.useImage' v-for='(style, index) in mod.styles' :key='style.name' class="style-cover render" @click='newMod(mod.name, index)'>
           <div class="render-mod-container--click-prevent"></div>
-          <div class="render-mod-container" :style="generateStyleString(style.preview && style.preview.outter || [])">
+          <div class="render-mod-container" :style="generateStyleStringB(style.preview && style.preview.outter || [])">
             <div :style="generateStyleString(style.preview && style.preview.inner ||[])">
               <component class="render-mod" :is='mod.mod' :mod='modFactory(mod)' :conf='modConf(mod, index)' :theme='theme'></component>
             </div>
@@ -87,6 +87,25 @@ export default {
         })
       }
 
+      return string
+    },
+    generateStyleStringB(style) {
+      let string = ''
+
+      let replaceValue = valueA => {
+        let valueB
+        if (valueA.indexOf('px') !== -1) {
+          let index = valueA.indexOf('px')
+          valueB = valueA.substring(0, index)
+        }
+        return valueB * 0.72559 //0.72559=275px/379px
+      }
+
+      if (style) {
+        _.forEach(style, (value, key) => {
+          string = string + key + ':' + replaceValue(value) + 'px;'
+        })
+      }
       return string
     },
     nodeMenuClick(data) {
@@ -169,7 +188,7 @@ export default {
 
     .render-mod {
       width: 1080px;
-      transform: scale(0.26);
+      transform: scale(0.25463); //0.25463=275px/1080px
       transform-origin: top left;
     }
   }

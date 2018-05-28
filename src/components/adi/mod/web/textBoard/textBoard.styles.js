@@ -48,6 +48,14 @@ export default [
     options: {
       theme: {},
       config: { ...emptyData }
+    },
+    preview: {
+      outter: {
+        height: '37.2px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
+      }
     }
   },
   {
@@ -79,6 +87,14 @@ export default [
     options: {
       theme: {},
       config: { ...emptyData }
+    },
+    preview: {
+      outter: {
+        height: '37.2px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
+      }
     }
   },
   {
@@ -123,6 +139,14 @@ export default [
     options: {
       theme: {},
       config: { ...emptyData }
+    },
+    preview: {
+      outter: {
+        height: '58.96px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
+      }
     }
   },
   {
@@ -167,6 +191,14 @@ export default [
     options: {
       theme: {},
       config: { ...emptyData }
+    },
+    preview: {
+      outter: {
+        height: '58.96px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
+      }
     }
   }
 ]

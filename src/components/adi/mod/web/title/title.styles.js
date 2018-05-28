@@ -89,7 +89,6 @@ export default [
         ...defaultData
       }
     },
-    cover: require('@/../static/adi/title/title1.png'),
     preview: {
       outter: {
         height: '47px'
@@ -156,7 +155,6 @@ export default [
         menu: _.merge({}, defaultData.menu, { itemStyle: { float: 'right' } })
       }
     },
-    cover: require('@/../static/adi/title/title1.png'),
     preview: {
       outter: {
         height: '47px'
@@ -223,7 +221,6 @@ export default [
         ...defaultData
       }
     },
-    cover: require('@/../static/adi/title/title2.png'),
     preview: {
       outter: {
         height: '63px'
@@ -290,7 +287,6 @@ export default [
         menu: _.merge({}, defaultData.menu, { itemStyle: { float: 'right' } })
       }
     },
-    cover: require('@/../static/adi/title/title2.png'),
     preview: {
       outter: {
         height: '63px'

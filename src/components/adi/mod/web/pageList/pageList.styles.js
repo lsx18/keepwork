@@ -8,17 +8,19 @@ export default [
       }
     },
     props: {
-      rootRow: { gutter: 10 }
+      rootRow: { gutter: 0 }
     },
     theme: {
       root: ['mod-space'],
       colGroupRow: ['mod-full-width']
     },
     options: {},
-    // cover: require('@/../static/adi/'),
     preview: {
       outter: {
-        height: '30px'
+        height: '25.62px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
       }
     }
   },
@@ -40,10 +42,12 @@ export default [
       colGroupRow: ['mod-full-width']
     },
     options: {},
-    // cover: require('@/../static/adi/'),
     preview: {
       outter: {
-        height: '30px'
+        height: '25.62px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
       }
     }
   },
@@ -64,10 +68,12 @@ export default [
       colGroupRow: ['mod-full-width']
     },
     options: {},
-    // cover: require('@/../static/adi/'),
     preview: {
       outter: {
-        height: '30px'
+        height: '25.62px'
+      },
+      inner: {
+        'margin-top': '-21.06px'
       }
     }
   }

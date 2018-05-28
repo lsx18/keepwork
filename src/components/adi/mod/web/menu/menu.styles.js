@@ -147,7 +147,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '14px'
@@ -419,7 +418,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '26px'
@@ -458,7 +456,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '26px'
@@ -497,7 +494,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '26px'
@@ -536,7 +532,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '26px'
@@ -575,7 +570,6 @@ export default [
         }
       }
     },
-    // cover: require('@/../static/adi/menu/menu.png'),
     preview: {
       outter: {
         height: '26px'

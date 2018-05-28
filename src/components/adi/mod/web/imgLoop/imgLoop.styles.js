@@ -24,7 +24,6 @@ export default [
         imgLoop: { height: '150px' }
       }
     },
-    cover: require('@/../static/adi/imgLoop/thumbnail.png'),
     preview: {
       outter: {
         height: '40px'
@@ -41,7 +40,6 @@ export default [
       theme: {},
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/imgLoop/thumbnail.png'),
     preview: {
       outter: {
         height: '79px'

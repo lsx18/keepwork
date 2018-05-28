@@ -34,9 +34,6 @@ export default {
 
       return globalTheme
     }
-    // styles() {
-    //   return mods[this.mod.modType].styles
-    // }
   },
   methods: {
     ...mapActions({
@@ -88,7 +85,7 @@ export default {
 }
 
 .render {
-  // width: 295px;
+  width: 403px;
   height: auto;
   background-color: white;
   overflow: hidden;
@@ -105,13 +102,13 @@ export default {
 
   .render-mod-container {
     border: 10px solid white;
-    // width: 275px;
+    width: 379px;
     height: 290px;
     overflow: hidden;
 
     .render-mod {
       width: 1080px;
-      transform: scale(0.357);
+      transform: scale(0.35093); // 0.35093=379px/1080px
       transform-origin: top left;
     }
   }
