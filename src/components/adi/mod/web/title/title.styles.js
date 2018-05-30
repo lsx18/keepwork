@@ -317,7 +317,6 @@ export default [
         width: '180px'
       },
       colBreadCrumb: {
-        height: '64px',
         display: 'flex',
         'justify-content': 'center',
         'align-items': 'center'
@@ -338,8 +337,7 @@ export default [
       }
     },
     theme: {
-      root: [],
-      colGroupRow: ['mod-full-width']
+      root: []
     },
     options: {
       theme: {
@@ -354,7 +352,7 @@ export default [
     },
     preview: {
       outter: {
-        height: '64px'
+        height: '13px'
       }
     }
   }
