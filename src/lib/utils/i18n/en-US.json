@@ -314,6 +314,8 @@
     "size": "size",
     "menu": "menu",
     "logo": "icon",
+    "logoB": "icon",
+    "menuB": "menu",
     "businessName": "main title",
     "tagline": "subtitle",
     "qq": "QQ number",
