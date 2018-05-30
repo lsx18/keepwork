@@ -7,7 +7,7 @@ const renderTemplate = (h, m, data) => {
 
   return _.map(data, menuData => {
     return (
-      <el-breadcrumb-item>
+      <el-breadcrumb-item style={m.getStyle}>
         <a target={m.getTarget} href={menuData.link} class={m.activeClass}>
           {m.isEmptyData ? m.$t(menuData.name) : menuData.name}
         </a>
@@ -19,13 +19,7 @@ const renderTemplate = (h, m, data) => {
 export default {
   name: 'AdiBreadCrumb',
   render(h) {
-    return (
-      <div class="comp-breadCrumb">
-        <el-breadcrumb style={this.getStyle} separator="/">
-          {renderTemplate(h, this)}
-        </el-breadcrumb>
-      </div>
-    )
+    return <div class="comp-breadCrumb">{renderTemplate(h, this)}</div>
   },
   mixins: [compBaseMixin],
   methods: {},
