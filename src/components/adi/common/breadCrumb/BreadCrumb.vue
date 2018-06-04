@@ -71,9 +71,9 @@ export default {
     font-weight: normal;
   }
   a:hover {
-    color: #ff2121;
-    background-color: #ffefef;
-    border-bottom: #ff2121 4px solid;
+    color: #3ba4ff;
+    background-color: #bbdfff;
+    border-bottom: #3ba4ff 4px solid;
   }
 }
 </style>
