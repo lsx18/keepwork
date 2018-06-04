@@ -1,13 +1,13 @@
 <template>
   <div class="comp-breadCrumbPage">
     <div class="pathName" :style="nameStyle">
-      <a :target='target'>新闻资讯</a>
+      <a :target='target'>{{properties.name}}</a>
     </div>
     <div class="wrapper-right">
       <p :style="labelStyle">您所在的位置：</p>
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }" :style="labelStyle">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :style="pageStyle">新闻资讯</el-breadcrumb-item>
+        <el-breadcrumb-item :style="pageStyle">{{properties.name}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
   </div>
