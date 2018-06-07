@@ -309,8 +309,8 @@ export default [
     data: {
       root: {},
       colGroupRow: {
-        display: 'flex',
-        'align-items': 'center'
+        // display: 'flex',
+        // 'align-items': 'center'
       },
       colLogoB: {
         display: 'flex',
@@ -326,7 +326,10 @@ export default [
         'align-items': 'center'
       },
       menuB: {
-        width: 'auto'
+        width: 'auto',
+        // 'text-align': 'center'
+        display: 'flex',
+        'justify-content': 'space-between'
       },
       '@media only screen and (max-width: 767px)': {
         colLogoB: {

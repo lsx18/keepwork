@@ -1,15 +1,19 @@
 <template>
-  <div class="comp-pagePath">
-    <div class="pathName" :style="nameStyle">
+  <el-row class="comp-pagePath">
+    <el-col :xs="24" :sm="6" class="pathName" :style="nameStyle">
       <a :target='target'>{{properties.name?properties.name:$t('editor.yourPage')}}</a>
-    </div>
-    <div class="wrapper-right">
+    </el-col>
+    <el-col :xs="24" :sm="18" class="wrapper-right">
       <p :style="labelStyle">{{$t('editor.yourPosition')}}</p>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :style="selectStyle(index)">{{item}}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-  </div>
+
+      <div class="pathContainer">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :style="selectStyle(index)">{{item}}</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
+
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -64,7 +68,7 @@ export default {
 <style lang="scss" scoped>
 .comp-pagePath {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   padding: 0 40px;
   background-color: #f5f5f5;
   border: 1px solid #e4e3e3;
@@ -75,8 +79,14 @@ export default {
   }
   .wrapper-right {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    // height: 16px;
     color: unset;
+    p {
+      display: inline-block;
+      width: 126px;
+    }
     .el-breadcrumb {
       color: unset;
       .el-breadcrumb__item {
@@ -88,7 +98,18 @@ export default {
 }
 @media only screen and (max-width: 767px) {
   .comp-pagePath {
+    display: block;
     padding: 0 10px;
+    .wrapper-right {
+      justify-content: flex-start;
+      .pathContainer {
+        max-width: 300px;
+        overflow: hidden;
+        .el-breadcrumb {
+          overflow-x: auto;
+        }
+      }
+    }
   }
 }
 </style>
