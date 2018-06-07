@@ -1,19 +1,28 @@
 <template>
-  <div class="comp-pagePath">
-    <div class="pathName" :style="nameStyle">
+  <el-row class="pagePath comp">
+
+    <!-- <el-col :xs="24" :sm="6" class="pagePath__page-name" :style="nameStyle"> -->
+    <el-col :xs="24" :sm="6" :class="getPageNameClass">
       <a :target='target'>{{properties.name?properties.name:$t('editor.yourPage')}}</a>
-    </div>
-    <div class="wrapper-right">
-      <p :style="labelStyle">{{$t('editor.yourPosition')}}</p>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :style="selectStyle(index)">{{item}}</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-  </div>
+    </el-col>
+
+    <el-col :xs="24" :sm="18" class="pagePath__path-info">
+      <p class="pagePath__path-info__position" :style="labelStyle">{{$t('editor.yourPosition')}}</p>
+      <div class="pagePath__path-info__squeue">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :style="selectStyle(index)">{{item}}</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
+    </el-col>
+
+  </el-row>
 </template>
 
 <script>
 import compBaseMixin from '../comp.base.mixin'
+import jss from 'jss'
+import preset from 'jss-preset-default'
+
 export default {
   name: 'AdiPagePath',
   mixins: [compBaseMixin],
@@ -35,6 +44,26 @@ export default {
         'font-size': this.options.nameFontSize,
         color: this.options.nameFontColor
       })
+    },
+    getPageNameClass() {
+      let PageName = 'pagePath__page-name'
+      let style = {
+        [PageName]: {
+          'font-size': this.options.nameFontSize,
+          color: this.options.nameFontColor
+        },
+        '@media only screen and (max-width: 767px)': {
+          [PageName]: {
+            'font-size': this.options.nameMobileSize
+            // color: this.options.nameFontColor
+          }
+        }
+      }
+      if (!this.sheet) {
+        this.sheet = jss.createStyleSheet(style)
+        this.sheet.attach()
+      }
+      return this.sheet.classes[PageName]
     },
     labelStyle() {
       return this.generateStyleString({
@@ -62,21 +91,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.comp-pagePath {
+.pagePath {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   padding: 0 40px;
   background-color: #f5f5f5;
   border: 1px solid #e4e3e3;
   box-shadow: 0 0 10px #e4e3e3;
-  .pathName {
+  .pagePath__page-name {
     display: flex;
     align-items: center;
   }
-  .wrapper-right {
+  .pagePath__path-info {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    // height: 16px;
     color: unset;
+    .pagePath__path-info__position {
+      // display: inline-block;
+      width: 126px;
+      height: 21px;
+    }
     .el-breadcrumb {
       color: unset;
       .el-breadcrumb__item {
@@ -87,14 +123,25 @@ export default {
   }
 }
 @media only screen and (max-width: 767px) {
-  .comp-pagePath {
-    padding: 0 10px;
+  .pagePath {
+    display: block;
+    padding: 10px;
+    .pagePath__path-info {
+      justify-content: flex-start;
+      .pagePath__path-info__squeue {
+        overflow: hidden;
+        .el-breadcrumb {
+          // max-width: 300px;
+          overflow-x: auto;
+        }
+      }
+    }
   }
 }
 </style>
 
 <style lang="scss">
-.comp-pagePath {
+.pagePath {
   .el-breadcrumb__item {
     .el-breadcrumb__inner {
       font-weight: normal;
