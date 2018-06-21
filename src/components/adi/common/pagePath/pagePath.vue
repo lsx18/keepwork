@@ -42,26 +42,46 @@ export default {
       }
     },
     formatData(source) {
-      this.pageData = []
+      let pageData = []
       let allData = source && source.hits && source.hits.hits
 
       _.forEach(allData, (item, index) => {
-        let currentItem = item._source
-
-        let currentData = {
-          title: currentItem['pagename'].replace(path.substr(1) + '/', ''),
-          link: currentItem['url']
+        let eachData = {
+          nameArray: '',
+          lastName: '',
+          link: item._source['url']
         }
 
-        pageData.push(currentData)
+        let array = item._source['pagename'].split('/')
+        eachData['nameArray'] = array
+        eachData['lastName'] = array[array.length - 1]
+
+        if (this.properties.name == eachData.lastName) {
+          _.forEach(eachData.nameArray, (each, key) => {
+            let eachName = {
+              title: each,
+              link: ''
+            }
+            pageData.push(eachName)
+            // if (this.eachName.title == eachData.lastName) {
+            //   this.eachName.link = this.eachData.link
+            // }
+          })
+        }
       })
+
+      if (pageData) {
+        return pageData
+      } else {
+        alert(this.$t('editor.notExist'))
+      }
     },
     async getSource() {
       if (!this.properties.name) {
         return
       }
 
-      let url = this.activePageInfo.sitepath + '/' + this.properties.name
+      let url = this.activePageInfo.sitepath
 
       let index = process.env.ES_INDEX
       let type = process.env.ES_TYPE
@@ -75,9 +95,17 @@ export default {
                   operator: 'and'
                 }
               }
-            }
+            },
+            must_not: [
+              {
+                match: {
+                  url: '.gitignore'
+                }
+              }
+            ]
           }
-        }
+        },
+        size: 17
       }
 
       let source = await search({ index, type, body })
@@ -86,7 +114,10 @@ export default {
   },
   computed: {
     ...mapGetters({
-      activePageInfo: 'activePageInfo'
+      activePageInfo: 'activePageInfo',
+      getGitlabAPI: 'gitlab/getGitlabAPI',
+      getProjectIdByPath: 'gitlab/getProjectIdByPath',
+      repositoryTreesAllFiles: 'gitlab/repositoryTreesAllFiles'
     }),
     target() {
       return this.properties.target
@@ -134,12 +165,12 @@ export default {
     getPathData() {
       let pathData
       if (this.properties.name.length == 0) {
-        pathData = [this.$t('editor.defaultPage'), this.$t('editor.yourPage')]
+        pathData = [
+          { title: this.$t('editor.defaultPage'), link: '' },
+          { title: this.$t('editor.yourPage'), link: '' }
+        ]
       } else {
         pathData = this.getSource()
-        // pathData = this.properties.path
-        //   .split('>')
-        //   .concat(this.properties.name ? this.properties.name : '')
       }
       return pathData
     }

@@ -222,6 +222,8 @@
     "yourPosition": "Your position：",
     "defaultPage": "Default page",
 
+    "notExist": "tip：the page is missing!",
+
     "removeImgConfirmMsg": "Are you sure to remove this image?"
   },
   "modList": {

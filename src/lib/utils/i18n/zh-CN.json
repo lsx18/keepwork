@@ -212,6 +212,8 @@
     "yourPosition": "您所在的位置：",
     "defaultPage": "首页",
 
+    "notExist": "提示：该页面不存在!",
+
     "removeImgConfirmMsg": "你确定要删除图片吗？"
   },
   "modList": {
