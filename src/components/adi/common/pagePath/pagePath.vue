@@ -10,7 +10,8 @@
       </div>
       <div class="pagePath__path-info__squeue">
         <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :class="selectStyle(index)">
+          <!-- <el-breadcrumb-item v-for="(item, index) in getPathData" :key="index" :class="selectStyle(index)"> -->
+          <el-breadcrumb-item v-for="(item, index) in pageData" :key="index" :class="selectStyle(index)">
             <a :href="item.link" :target='target'>{{item.title}}</a>
           </el-breadcrumb-item>
         </el-breadcrumb>
@@ -30,6 +31,12 @@ import _ from 'lodash'
 export default {
   name: 'AdiPagePath',
   mixins: [compBaseMixin],
+  data() {
+    return {
+      pageData: []
+      // pathData: []
+    }
+  },
   created() {
     this.getSource()
   },
@@ -42,36 +49,43 @@ export default {
       }
     },
     formatData(source) {
-      let pageData = []
+      this.pageData = []
       let allData = source && source.hits && source.hits.hits
 
       _.forEach(allData, (item, index) => {
         let eachData = {
-          nameArray: '',
-          lastName: '',
-          link: item._source['url']
+          lastName: ''
         }
 
         let array = item._source['pagename'].split('/')
-        eachData['nameArray'] = array
-        eachData['lastName'] = array[array.length - 1]
+        eachData.lastName = array[array.length - 1]
 
         if (this.properties.name == eachData.lastName) {
-          _.forEach(eachData.nameArray, (each, key) => {
+          // let pageData0 = {
+          //   title: 'index',
+          //   link: ''
+          // }
+          // this.pageData.unshift(pageData0)
+          _.forEach(array, (each, key) => {
             let eachName = {
               title: each,
-              link: ''
+              link: item._source['url']
             }
-            pageData.push(eachName)
-            // if (this.eachName.title == eachData.lastName) {
-            //   this.eachName.link = this.eachData.link
-            // }
+
+            this.pageData.push(eachName)
           })
+          for (let i = this.pageData.length - 1; i >= 1; i--) {
+            this.pageData[i - 1].link = this.pageData[i].link.replace(
+              '/' + this.pageData[i].title,
+              ''
+            )
+          }
+          // console.log(this.pageData)
         }
       })
 
-      if (pageData) {
-        return pageData
+      if (this.pageData) {
+        return this.pageData
       } else {
         alert(this.$t('editor.notExist'))
       }
@@ -105,19 +119,16 @@ export default {
             ]
           }
         },
-        size: 17
+        size: 27 //17
       }
 
       let source = await search({ index, type, body })
-      this.formatData(source)
+      return this.formatData(source)
     }
   },
   computed: {
     ...mapGetters({
-      activePageInfo: 'activePageInfo',
-      getGitlabAPI: 'gitlab/getGitlabAPI',
-      getProjectIdByPath: 'gitlab/getProjectIdByPath',
-      repositoryTreesAllFiles: 'gitlab/repositoryTreesAllFiles'
+      activePageInfo: 'activePageInfo'
     }),
     target() {
       return this.properties.target
@@ -162,7 +173,7 @@ export default {
         pathNameClass: this.sheet.classes[pathName]
       }
     },
-    getPathData() {
+    async getPathData() {
       let pathData
       if (this.properties.name.length == 0) {
         pathData = [
@@ -170,8 +181,9 @@ export default {
           { title: this.$t('editor.yourPage'), link: '' }
         ]
       } else {
-        pathData = this.getSource()
+        pathData = await this.getSource()
       }
+      // console.log(pathData)
       return pathData
     }
   }
