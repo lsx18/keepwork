@@ -21,7 +21,7 @@ export default [
         pageRoute: {
           nameFontSize: 'font_3',
           nameFontColor: 'color_6',
-          labelFontColor: 'color_3',
+          labelFontColor: 'color_10',
           commonSize: 'font_5',
           pageFontColor: 'color_8',
 

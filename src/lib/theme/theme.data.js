@@ -14,7 +14,8 @@ export default {
         '#99cffe',
         '#3ba4ff',
         '#1780dc',
-        '#005399'
+        '#005399',
+        'red'
       ]
       // ['blue', 'green', 'red', 'red'],
       // ['green', 'red', 'blue', 'yellow']
