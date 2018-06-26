@@ -11,7 +11,7 @@
       <div class="pagePath__path-info__squeue">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item v-for="(item, index) in pageData" :key="index" :class="selectStyle(index)">
-            <a :href="item.link" :target='target'>{{item.title}}</a>
+            <a :href="item.link" :target='target' @mouseenter="mouseenter" @mouseleave="mouseleave">{{item.title}}</a>
           </el-breadcrumb-item>
         </el-breadcrumb>
       </div>
@@ -44,6 +44,14 @@ export default {
       } else {
         return this.getPageNameClass.labelNameClass
       }
+    },
+    mouseenter(event) {
+      let element = event.path[0]
+      element.style.color = this.options.pageFontColor
+    },
+    mouseleave(event) {
+      let element = event.path[0]
+      element.style.color = null
     },
     formatData(source) {
       this.pageData = []
@@ -78,8 +86,12 @@ export default {
               ''
             )
           }
-          // console.log(this)
-          // console.log(this.pageData)
+
+          for (let j = this.pageData.length - 2; j >= 1; j--) {
+            this.pageData[j].link = this.pageData[j].link + 'Index'
+          }
+          this.pageData[0].link = this.pageData[0].link + '/index'
+          this.pageData[this.pageData.length - 1].link = 'javascript:void(0)'
         }
       })
 
@@ -110,10 +122,8 @@ export default {
             ]
           }
         }
-        // size: 27 //17
       }
       let source = await search({ index, type, body })
-      // console.log(source)
       this.formatData(source)
     }
   },
@@ -181,7 +191,6 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    // color: unset;
     white-space: nowrap;
 
     .pagePath__path-info__position {
@@ -193,13 +202,9 @@ export default {
       overflow-x: hidden;
 
       .el-breadcrumb {
-        // color: unset;
         overflow-x: auto;
         overflow-y: hidden;
         display: flex;
-        .el-breadcrumb__item {
-          // color: unset;
-        }
       }
     }
   }
@@ -229,8 +234,6 @@ export default {
 <style lang="scss">
 .pagePath {
   .el-breadcrumb__item {
-    // color: unset;
-
     .el-breadcrumb__inner {
       color: unset;
       a {
@@ -239,11 +242,17 @@ export default {
         text-decoration: none;
       }
     }
-    .el-breadcrumb__inner a:hover {
-      color: unset;
-    }
     .el-breadcrumb__separator {
       color: unset;
+    }
+  }
+
+  .el-breadcrumb__item:last-child {
+    .el-breadcrumb__inner {
+      color: unset;
+      a {
+        color: unset;
+      }
     }
   }
 }
