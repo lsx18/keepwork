@@ -261,7 +261,10 @@
     "readFileFromLocal": "正在读取文件。。。",
     "enlargeMdEditing": "大窗口编辑",
 
-    "pleaseInput": "请输入"
+    "pleaseInput": "请输入",
+
+    "inputUrlOfPDF": "请输入要打开的pdf地址:",
+    "openPDF": "打开pdf文件"
   },
   "modList": {
     "recent": "常用",
