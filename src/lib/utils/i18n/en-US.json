@@ -272,7 +272,10 @@
     "readFileFromLocal": "reading file from local ...",
     "enlargeMdEditing": "Large window editing",
 
-    "pleaseInput": "Please input"
+    "pleaseInput": "Please input",
+    
+    "inputUrlOfPDF": "Please input url of the pdf file :",
+    "openPDF": "Open the pdf file"
   },
   "modList": {
     "recent": "Commonly used",

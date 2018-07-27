@@ -12,6 +12,7 @@ import { messages as i18nMessages, locale } from '@/lib/utils/i18n'
 import 'element-ui/lib/theme-chalk/index.css'
 import handleMessage from '@/lib/iframe'
 import '@/components/common/thirdAuth'
+import pdf from '@/components/adi/common/pdf'
 
 window.addEventListener('message', handleMessage)
 
@@ -20,6 +21,7 @@ Vue.use(Vuex)
 Vue.use(ElementUI)
 
 Vue.use(VueI18n)
+Vue.use(pdf)
 
 const i18n = new VueI18n({
   locale,

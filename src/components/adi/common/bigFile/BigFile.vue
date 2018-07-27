@@ -22,6 +22,14 @@
         <div class="split"></div>
         <div class="download iconfont icon-download" @click="download"></div>
       </div>
+      <!-- <div>
+          <label>{{$t('editor.inputUrlOfPDF')}}</label>
+          <input type="text" v-model="url"/>
+          <button @click="OpenPDF">{{$t('editor.openPDF')}}</button>
+      </div> -->
+
+      <!-- <el-button plain type="info" @click='editorShow'>{{$t('editor.openPDF')}}</el-button>
+      <PdfFile :isEditorShow='isEditorShow' @confirm='finishData' @cancel='cancel'></PdfFile> -->
       <div class="bigfile-image"
            v-if="getType === handleExt['png'] || getType === handleExt['jpg'] || getType === handleExt['gif']">
         <img :src="actualUrl" />
@@ -44,6 +52,7 @@ import { mapGetters } from 'vuex'
 import axios from 'axios'
 import prettysize from 'prettysize'
 import _ from 'lodash'
+// import PdfFile from './PdfFile.vue'
 
 export default {
   name: 'AdiBigFile',
@@ -90,10 +99,20 @@ export default {
         // pdf:'pdf',
         gif:'gif'
       },
-      otherExt: 'other'
+      otherExt: 'other',
+      isEditorShow: false
     }
   },
   methods: {
+    editorShow() {
+      this.isEditorShow = true
+    },
+    cancel() {
+      this.isEditorShow = false
+    },
+    finishData() {
+      this.isEditorShow = false
+    },
     getSize() {
       return prettysize(this.properties.size)
     },
@@ -149,6 +168,9 @@ export default {
       }
     }
   },
+  // components: {
+  //   PdfFile
+  // },
   computed: {
     ...mapGetters({
       token: 'user/token'
