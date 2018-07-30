@@ -22,6 +22,11 @@
         <div class="split"></div>
         <div class="download iconfont icon-download" @click="download"></div>
       </div>
+      <!-- <div>
+          <label>{{$t('editor.inputUrlOfPDF')}}</label>
+          <input type="text" v-model="url"/>
+          <button @click="OpenPDF">{{$t('editor.openPDF')}}</button>
+      </div> -->
       <div class="bigfile-image"
            v-if="getType === handleExt['png'] || getType === handleExt['jpg'] || getType === handleExt['gif']">
         <img :src="actualUrl" />
@@ -33,6 +38,7 @@
       </div>
       <div class="bigfile-pdf" v-if="getType === handleExt['pdf']">
         <iframe :src="actualUrl"></iframe>
+        <!-- <div >123</div> -->
       </div>
     </div>
   </div>
@@ -44,6 +50,9 @@ import { mapGetters } from 'vuex'
 import axios from 'axios'
 import prettysize from 'prettysize'
 import _ from 'lodash'
+
+let Base64 = require('js-base64').Base64
+// console.log(require('js-base64'))
 
 export default {
   name: 'AdiBigFile',
@@ -87,10 +96,12 @@ export default {
         mp4:'mp4',
         jpg:'jpg',
         png:'png',
-        // pdf:'pdf',
+        gif:'gif',
+        pdf:'pdf',
         gif:'gif'
       },
       otherExt: 'other'
+      // url: '/mozilla/pdf.js/28360a0142f3610bfc30fc01db50303ad6202f0c/test/pdfs/calgray.pdf'
     }
   },
   methods: {
@@ -147,12 +158,18 @@ export default {
         this.url = this.fileUrl
         this.type = this.getFileType(this.properties.fileType)
       }
+    },
+    OpenPDF () {
+      this.$router.push({ name: 'PDF', query: { url: Base64.encode(this.url) } })
     }
   },
   computed: {
     ...mapGetters({
       token: 'user/token'
     }),
+    pdfUrl() {
+      return '/viewer.html'
+    },
     getIconClass() {
       if (this.properties.ext) {
         if(this.ext[this.properties.ext]) {
