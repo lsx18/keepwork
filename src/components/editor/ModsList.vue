@@ -7,9 +7,9 @@
     <el-col class="preview-box">
       <div v-for='mod in activeModsList' :key='mod.name'>
         <div v-if='!style.useImage' v-for='(style, index) in mod.styles' :key='style.name' class="style-cover render" @click='newMod(mod.name, index)'>
-          <div class="render-mod-container--click-prevent"></div>
+          <!-- <div class="render-mod-container--click-prevent"></div> -->
           <div class="render-mod-container" :style="generateStyleString(style.preview && style.preview.outter || [])">
-            <div :style="generateStyleString(style.preview && style.preview.inner ||[])">
+            <div>
               <component class="render-mod" :is='mod.mod' :mod='modFactory(mod)' :conf='modConf(mod, index)' :theme='theme'></component>
             </div>
           </div>
