@@ -20,6 +20,7 @@ import AdiPagePath from './pagePath/pagePath.properties'
 import AdiTab from './tab/tab.properties'
 import AdiCategoryList from './categoryList/categoryList.properties'
 import AdiPageSwitching from './pageSwitching/pageSwitching.properties'
+import AdiIcon from './icon/icon.properties'
 
 export default {
   AdiMarkdown,
@@ -43,5 +44,6 @@ export default {
   AdiPagePath,
   AdiTab,
   AdiCategoryList,
-  AdiPageSwitching
+  AdiPageSwitching,
+  AdiIcon
 }
