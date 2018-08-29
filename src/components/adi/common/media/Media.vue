@@ -1,12 +1,14 @@
 <template>
-  <div class='comp-media'>
-    <a :target='target' :href='link'>
-      <div :class="getImgClass" v-if='isImage'>
-        <img :src="src">
-      </div>
-      <video v-else-if='isVideo' :src='src'></video>
-      <div class="svg" v-if="isBase64Svg" v-html="svg" :style="svgFill"></div>
-    </a>
+  <div class='comp-media' style="height: 97px">
+    <div v-for="(item, index) in forImgs" :key="index" v-if="item.img && item.img.length != 0">
+      <a :target='target' :href='item.link'>
+        <div :class="getImgClass" v-if='isImage'>
+          <div class="imgs" :style="loadImg(item)"></div>
+        </div>
+        <video v-else-if='isVideo' :src='src'></video>
+        <div class="svg" v-if="isBase64Svg" v-html="svg" :style="svgFill"></div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,11 @@ export default {
   name: 'AdiMedia',
   mixins: [compBaseMixin],
   computed: {
+    forImgs() {
+      return this.properties.data.length == 0
+        ? this.options.data
+        : this.properties.data
+    },
     svg() {
       if (this.isBase64Svg) {
         let base64Svg = this.src.split(',')[1] ? this.src.split(',')[1] : ''
@@ -38,9 +45,6 @@ export default {
     },
     isBase64Svg() {
       return Media.isBase64Svg(this.src)
-    },
-    src() {
-      return this.properties.src ? this.properties.src : this.options.emptySrc
     },
     target() {
       return this.properties.target
@@ -89,6 +93,11 @@ export default {
     }
   },
   methods: {
+    loadImg(item) {
+      return this.generateStyleString({
+        'background-image': 'url(' + item.img + ')'
+      })
+    },
     parsePx(value) {
       if(value) {
         return parseInt(value) + 'px!important'
@@ -122,13 +131,11 @@ export default {
       position: relative;
       overflow: hidden;
 
-      img {
-        position: absolute;
+      .imgs {
         width: 100%;
         height: 100%;
-        left: 0;
-        top: 0;
-        object-fit: cover;
+        background-position: center;
+        background-size: cover;
       }
     }
   }
