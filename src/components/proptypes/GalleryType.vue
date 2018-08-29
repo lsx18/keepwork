@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="gallery-type">
-      <el-button @click='handleAdd' class="gallery-type-add-btn" icon="el-icon-plus">{{$t('common.add')}}</el-button>
+      <el-button v-if="this.$store.getters.activeProperty === 'imgLoop'" @click='handleAdd' class="gallery-type-add-btn" icon="el-icon-plus">{{$t('common.add')}}</el-button>
       <div v-for='(item, index) in galleryData' class="gallery-type-item" :key='index' :item="item" @change="handleChange()">
 
         <div v-if="!item.type || item.type === 'images'" class="gallery-type-item-img" :style="{

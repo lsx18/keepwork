@@ -1,13 +1,15 @@
 <template>
   <div class='comp-media'>
-    <a :target='target' :href='link'>
-      <div :class="getImgClass" v-if='isImage'>
-        <img :src="src">
-      </div>
-      <video v-else-if='isVideo' :src='src'></video>
-      <div class="svg" v-if="isBase64Svg" v-html="svg" :style="svgFill"></div>
-    </a>
-  </div>
+      <a :target='target' :href='link'>
+        <!-- <div :class="getImgClass" v-if='isImage'> -->
+        <div :class="getImgClass">
+          <img :src="src">
+          <!-- <div class="imgs" :style="loadImg()"></div> -->
+        </div>
+        <!-- <video v-else-if='isVideo' :src='src'></video> -->
+        <!-- <div class="svg" v-if="isBase64Svg" v-html="svg" :style="svgFill"></div> -->
+      </a>
+    </div>
 </template>
 
 <script>
@@ -40,7 +42,7 @@ export default {
       return Media.isBase64Svg(this.src)
     },
     src() {
-      return this.properties.src ? this.properties.src : this.options.emptySrc
+      return this.properties.data[0].img ? this.properties.data[0].img : this.options.emptySrc
     },
     target() {
       return this.properties.target
@@ -48,8 +50,8 @@ export default {
         : this.options.emptyTarget
     },
     link() {
-      return this.properties.link
-        ? this.properties.link
+      return this.properties.data[0].link
+        ? this.properties.data[0].link
         : this.options.emptyLink
     },
     getImgClass() {
@@ -89,6 +91,11 @@ export default {
     }
   },
   methods: {
+    // loadImg() {
+    //   return this.generateStyleString({
+    //     'background-image': 'url(' + this.properties.data[0].img + ')'
+    //   })
+    // },
     parsePx(value) {
       if(value) {
         return parseInt(value) + 'px!important'

@@ -1,7 +1,8 @@
 export default {
-  src: '',
-  link: '',
-  webWidth: '',
-  mobileWidth: '',
-  target: '_self'
+  data: [
+    {
+      img: require('@/../static/adi/imgLoop/imgCarouselOne.jpg'),
+      link: ''
+    }
+  ]
 }
