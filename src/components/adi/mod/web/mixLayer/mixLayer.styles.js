@@ -99,12 +99,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix1.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 1
   {
@@ -187,12 +182,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix2.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 2
   {
@@ -275,12 +265,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix3.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 3
   {
@@ -361,12 +346,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix4.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 4
   {
@@ -448,12 +428,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix5.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 5
   {
@@ -535,12 +510,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix6.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 6
   {
@@ -621,12 +591,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix7.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 7
   {
@@ -708,12 +673,7 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix8.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   },
   // style 8
   {
@@ -795,11 +755,6 @@ export default [
     options: {
       config: { ...emptyData }
     },
-    cover: require('@/../static/adi/mixLayer/mix9.png'),
-    preview: {
-      inner: {
-        'margin-top': '-20px'
-      }
-    }
+    cover: ''
   }
 ]

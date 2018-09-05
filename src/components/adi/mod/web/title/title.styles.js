@@ -91,7 +91,7 @@ export default [
         })
       }
     },
-    cover: require('@/../static/adi/title/title1.png')
+    cover: ''
   },
   // style 1
   {
@@ -155,7 +155,7 @@ export default [
         })
       }
     },
-    cover: require('@/../static/adi/title/title1.png')
+    cover: ''
   },
   // style 2
   {
@@ -219,7 +219,7 @@ export default [
         })
       }
     },
-    cover: require('@/../static/adi/title/title2.png')
+    cover: ''
   },
   // style 3
   {
@@ -283,7 +283,7 @@ export default [
         })
       }
     },
-    cover: require('@/../static/adi/title/title2.png')
+    cover: ''
   },
   // style 4
   {

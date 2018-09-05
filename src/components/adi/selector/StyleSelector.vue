@@ -6,7 +6,7 @@
         <component class="render-mod" :is='modConf.mod' :mod='currentMod(index)' :conf='modConf' :theme='theme'></component>
       </div>
     </div>
-    <img v-if='style.useImage && modConf.name != "ModMarkdown"' class="style-item" :class='{active: isActive(index)}' v-for='(style, index) in modConf.styles' :key='style.name' @click='changeStyle(index)' :src="style.cover" :alt="index">
+    <img v-if='style.useImage' class="style-item" :class='{active: isActive(index)}' v-for='(style, index) in modConf.styles' :key='style.name' @click='changeStyle(index)' :src="style.cover" :alt="index">
   </div>
 </template>
 
@@ -122,19 +122,19 @@ export default {
 
 @media screen and (max-width: 1920px) {
   .render {
-    background-color: white;
-    overflow: hidden;
-    margin: auto;
-    margin-bottom: 12px;
-    position: relative;
+    // background-color: white;
+    // overflow: hidden;
+    // margin: auto;
+    // margin-bottom: 12px;
+    // position: relative;
 
     .render-mod-container {
-      overflow: hidden;
+      // overflow: hidden;
 
       .render-mod {
-        width: 1080px;
+        // width: 1080px;
         transform: scale(0.24);
-        transform-origin: top left;
+        // transform-origin: top left;
       }
     }
   }
