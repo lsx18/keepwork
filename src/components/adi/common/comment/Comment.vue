@@ -7,7 +7,7 @@
           <textarea rows="3" v-model="content" :placeholder="$t(options.notice)"></textarea>
           <el-button @click="commit">{{$t(options.commit)}}</el-button>
         </div>
-        <div class="comment-box">
+        <div class="comment-box" v-if="getCommentList.length!=0">
           <div class="comment-item" v-for='comment in getCommentList' :key='comment._id'>
             <img :src="comment.userInfo.portrait">
             <div class="text">
@@ -30,18 +30,22 @@
             <textarea rows="3" v-model="content" :placeholder="$t(options.notice)"></textarea>
             <button @click="commit">{{$t(options.commit)}}</button>
           </div>
-          <h3><img :src="getStyleOneId">{{$t(options.title)}}</h3>
-          <hr>
-          <div class="comment-item" v-for='comment in getCommentList' :key='comment._id'>
-            <img :src="comment.userInfo.portrait">
-            <div class="text">
-              <h4>{{ comment.userInfo.displayName }}</h4>
-              <p class="info">{{ getFormatDate(comment.updateTime) }}</p>
-              <p>{{ comment.content }}</p>
-              <hr>
+          <!-- <div v-if="getCommentList.length!=0"> -->
+
+            <h3><img :src="getStyleOneId">{{$t(options.title)}}</h3>
+            <hr>
+            <div class="comment-item" v-for='comment in getCommentList' :key='comment._id'>
+              <img :src="comment.userInfo.portrait">
+              <div class="text">
+                <h4>{{ comment.userInfo.displayName }}</h4>
+                <p class="info">{{ getFormatDate(comment.updateTime) }}</p>
+                <p>{{ comment.content }}</p>
+                <hr>
+              </div>
+              <a class="delete-btn" @click="deleteComment(comment._id)">{{$t(options.delete)}}</a>
             </div>
-            <a class="delete-btn" @click="deleteComment(comment._id)">{{$t(options.delete)}}</a>
-          </div>
+
+          <!-- </div> -->
         </div>
       </div>
       <div class="shutup-comment" v-if="!properties.switch.value">
@@ -240,6 +244,8 @@ export default {
         width: 100%;
         border: 1px solid #ccc;
         border-radius: 4px;
+        // word-wrap:break-word;
+        // word-break:break-all;
       }
     }
 
@@ -258,13 +264,17 @@ export default {
 
         textarea {
           resize: none;
+          box-sizing: border-box;
           width: 100%;
-          height: 50px;
+          line-height: 18px;
+          // height: 50px;
           border: 2px solid #d4d4d4;
           outline: none;
           background-color: #eeeeee;
           font-size: 14px;
           padding: 10px;
+          // word-wrap:break-word;
+          // word-break:break-all;
         }
 
         button {
