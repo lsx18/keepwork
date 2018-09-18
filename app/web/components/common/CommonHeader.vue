@@ -296,7 +296,7 @@ export default {
     font-size: 30px;
   }
   .hidden-sm-and-up .el-submenu {
-    margin: 0 -10px;
+    margin: 0;
   }
   .el-menu-item {
     padding: 0 10px;

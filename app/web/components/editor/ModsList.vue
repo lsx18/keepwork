@@ -128,7 +128,7 @@ export default {
 
       let refactor = 0
       if(window.innerWidth <= 1920){
-        refactor = 0.1245
+        refactor = 0.125
       }else {
         refactor = 0.254
       }
@@ -208,7 +208,7 @@ export default {
     .render-mod-container {
       width: 135px;
       .render-mod {
-        transform: scale(0.1245);
+        transform: scale(0.125); //135/1080=0.125
       }
     }
   }

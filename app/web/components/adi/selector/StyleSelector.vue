@@ -68,12 +68,14 @@ export default {
 
       let refactor = 0
       if(window.innerWidth <= 1920){
-        refactor = 0.24
+        refactor = 0.24074
       }else {
         refactor = 0.357
       }
+      console.log(window.innerWidth)
       _.forEach(all , (dom, key) => {
         dom.style.height = null
+        // console.log(dom.offsetHeight)
         dom.style.height = dom.offsetHeight * refactor + 'px'
       })
     }
@@ -133,7 +135,7 @@ export default {
 
       .render-mod {
         width: 1080px;
-        transform: scale(0.24);
+        transform: scale(0.24074); //206/1080=0.24074
         transform-origin: top left;
       }
     }
