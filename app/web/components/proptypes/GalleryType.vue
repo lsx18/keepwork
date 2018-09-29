@@ -49,6 +49,9 @@
 import _ from 'lodash'
 import SkyDriveManagerDialog from '@/components/common/SkyDriveManagerDialog'
 import { mapGetters, mapActions } from 'vuex'
+import modLoader from '@/components/adi/mod'
+import BaseCompProptypes from '@/components/adi/common/comp.proptypes'
+import { constants } from 'http2';
 
 export default {
   name: 'GalleryType',
@@ -61,7 +64,8 @@ export default {
       selectedIndex: 0,
       isSkyDriveManagerDialogShow: false,
       autoplay: false,
-      playloop: false
+      playloop: false,
+      BaseCompProptypes
     }
   },
   async mounted() {
@@ -71,9 +75,49 @@ export default {
     ...mapGetters({
       personalAllPagePathList: 'user/personalAllPagePathList'
     }),
+    defaultValue() {
+        let activeMod = this.$store.getters.activeMod
+        let modConf = modLoader.load(activeMod.modType)
+        let currentStyle = modConf.styles[activeMod.data.styleID]
+
+        if (!currentStyle.options || !currentStyle.options.config) {
+          return false
+        }
+
+        console.log(modConf)
+        let componentAlias
+        _.forEach(modConf.components, (item, name) => {
+          _.forEach(this.BaseCompProptypes[item], (value, index) => {
+            if (value === 'gallery') {
+              componentAlias = name
+            } else {
+              return false
+            }
+          })
+        })
+
+        console.log(componentAlias)
+        console.log(currentStyle.options)
+
+        let componentAliasData = currentStyle.options.config[componentAlias]
+        console.log(componentAliasData)
+
+        let defaultKey
+        _.forEach(componentAliasData, (val, key) => {
+          if (val.indexOf('/public/img') !== -1) {
+            defaultKey = key
+          } else {
+            return false
+          }
+        })
+
+        console.log(componentAliasData[defaultKey])
+
+        return componentAliasData[defaultKey]
+    },
     galleryData: {
       get() {
-        return this.originValue
+        return this.originValue.length ? this.originValue : this.defaultValue
       },
       set() {
       }
