@@ -124,18 +124,17 @@ export default {
             password: this.ruleForm.password
           }
           this.loading = true
+          console.warn(payload)
           let info = await this.userLogin(payload).catch(e => {
             this.loading = false
           })
           this.loading = false
-          // if (info.error.id === 0) {
-          this.$emit('close')
-          window.location.reload()
-          // } else if (info.error.message === '用户不存在') {
-          //   this.showMessage('error', this.$t('common.usernameNotExist'))
-          // } else if (info.error.message === '密码错误') {
-          //   this.showMessage('error', this.$t('common.wrongPassword'))
-          // }
+          if (info) {
+            // return console.warn('dialog info:', info)
+            this.$emit('close')
+            return window.location.reload()
+          }
+          this.showMessage('error', this.$t('common.IncorrectUsernameOrPassword'))
         } else {
           return false
         }
@@ -190,14 +189,13 @@ export default {
 <style lang="scss">
 .login-dialog {
   .login-title {
-    width: 78%;
+    padding: 0 32px;
     margin: 0 auto 30px;
     font-size: 18px;
     color: #303133;
   }
   .register-oprate{
-    width: 78%;
-    margin: 0 auto;
+    margin: 0 32px;
     display: flex;
     .back-home-page{
       font-size: 14px;
@@ -229,12 +227,15 @@ export default {
     .el-dialog__body {
       padding: 0;
     }
-    width: 440px;
+    max-width: 352px;
     padding: 40px 0;
   }
   &-form {
-    width: 78%;
+    padding: 0 32px;
     margin: 0 auto;
+    .el-form-item{
+      margin-bottom: 18px;
+    }
     .el-form-item__content {
       .el-input__inner {
         &:focus {

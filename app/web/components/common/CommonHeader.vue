@@ -10,8 +10,8 @@
       <el-menu-item index='2' @click="goExplorationPage">
         {{$t('common.explore')}}
       </el-menu-item>
-      <el-menu-item index='4'>
-        <a href='/official/help/index'>{{$t('common.study')}}</a>
+      <el-menu-item index='4' @click="goStudyPage">
+        {{$t('common.study')}}
       </el-menu-item>
       <!-- <el-menu-item v-if="!IS_GLOBAL_VERSION" index='6'>
         <a href='//iicc.keepwork.com' target="_blank">
@@ -124,7 +124,7 @@
       <login-dialog :show="isLoginDialogShow" @close="closeLoginDialog" @isRegisterShow='goJoin'></login-dialog>
     </div>
     <div @click.stop v-if="isRegisterDialogShow" class="register-dialog">
-      <el-dialog width="440px" :visible.sync="isRegisterDialogShow">
+      <el-dialog :visible.sync="isRegisterDialogShow">
         <register-dialog @close="closeRegisterDialog"></register-dialog>
       </el-dialog>
     </div>
@@ -148,7 +148,8 @@ export default {
       isPersonalCenterShow: false,
       isSkyDriveManagerDialogShow: false,
       isLoginDialogShow: false,
-      isRegisterDialogShow: false
+      isRegisterDialogShow: false,
+      locationOrigin: window.location.origin,    
     }
   },
   computed: {
@@ -186,10 +187,16 @@ export default {
       userLogout: 'user/logout'
     }),
     goCreativityPage(){
-      this.$router.push('creativity')
+      // this.$router.push('creativity')
+      window.location.href=`${this.locationOrigin}/creativity`
     },
     goExplorationPage(){
-      this.$router.push('exploration')
+      // this.$router.push('exploration')
+      window.location.href=`${this.locationOrigin}/exploration`
+    },
+    goStudyPage(){
+      // this.$router.push('study')
+      window.location.href=`${this.locationOrigin}/study`
     },
     goHomePage(){
       this.$router.push('/')
@@ -341,6 +348,7 @@ export default {
   margin-right: 5px;
 }
 .register-dialog{
+  max-width: 352px;
   .el-dialog__body{
     padding: 0;
   }
