@@ -9,8 +9,12 @@
       <span v-if='invalid'> 错误的Mod指令 </span>
     </div>
     <div class='operator' v-if='isActive'>
-      <el-button class="add-mod-btn add-before" @click.stop.prevent='newMod(gConst.POSITION_BEFORE)'> + </el-button>
-      <el-button class="add-mod-btn add-after" @click.stop.prevent='newMod(gConst.POSITION_AFTER)'> + </el-button>
+      <el-popover placement="top" trigger="hover" content="在此处添加新模块">
+        <el-button slot="reference" class="add-mod-btn add-before" @click.stop.prevent='newMod(gConst.POSITION_BEFORE)'> + </el-button>
+      </el-popover>
+      <!-- <el-tooltip effect="dark" content="在此处添加新模块" placement="top"> -->
+        <el-button class="add-mod-btn add-after" @click.stop.prevent='newMod(gConst.POSITION_AFTER)'> + </el-button>
+      <!-- </el-tooltip> -->
     </div>
   </div>
   <QuickToTop/>  
@@ -115,7 +119,7 @@ export default {
 .add-mod-btn {
   width: 38px;
   height: 38px;
-  background-color: #7fc3ff;
+  /* background-color: #7fc3ff; */
   border-radius: 50%;
   color: #fff;
   text-align: center;
@@ -134,7 +138,7 @@ export default {
   bottom: -19px;
 }
 .add-mod-btn:hover {
-  background-color: #f7a935;
+  /* background-color: #f7a935; */
   color: #fff;
   font-size: 38px;
   transition: all 0.2s;
@@ -177,6 +181,10 @@ export default {
     z-index: 99;
     display: none;
     cursor: pointer;
+    .icon-delete:hover {
+      font-size: 20px;
+      transition: all 0.2s;
+    }
   }
   &:hover {
     .delete-mod {
@@ -198,6 +206,22 @@ export default {
 .kp-mod-selector.no-mask .comp:hover::before {
   background-color: transparent;
   cursor: pointer;
+}
+.el-popover--plain {
+    padding: 10px;
+}
+.el-popover {
+    position: absolute;
+    background: #303133;
+    min-width: 86px;
+    font-size: 12px;
+    color: #fff;
+    border: unset;
+    border-radius: 4px;
+}
+.popper__arrow {
+  // color: #303133;
+  // border-color:black transparent black transparent!important;
 }
 </style>
 
